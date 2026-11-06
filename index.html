@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>91次元官网入口-91次元官网入口地址_次元站访问导航与页面说明</title>
+<meta name="description" content="91次元官网入口页面说明：整理91次元官网入口的访问方式、页面栏目与内容分区，帮助访问者了解站内浏览路径、入口识别要点与常见访问问题。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f1226'/%3E%3Ccircle cx='32' cy='32' r='17' fill='none' stroke='%2358e1c8' stroke-width='4'/%3E%3Ccircle cx='32' cy='32' r='7' fill='%23f7c548'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#0d1020;
+    --bg-2:#141834;
+    --card:#191e3d;
+    --line:rgba(140,160,255,.18);
+    --ink:#eef1ff;
+    --ink-2:#aab3d6;
+    --acc:#58e1c8;
+    --acc-2:#f7c548;
+    --pink:#ff7ab6;
+    --radius:16px;
+    --max:1120px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(900px 500px at 85% -10%, rgba(88,225,200,.13), transparent 60%),
+      radial-gradient(700px 500px at 0% 10%, rgba(255,122,182,.10), transparent 60%),
+      var(--bg);
+    color:var(--ink);
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,"Segoe UI",sans-serif;
+    line-height:1.75;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  h1,h2,h3{margin:0;line-height:1.35;letter-spacing:.2px;}
+  p{margin:0;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 22px;}
+  .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+
+  /* 页头 */
+  header.site{
+    position:sticky;top:0;z-index:50;
+    background:rgba(13,16,32,.82);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .navbar{
+    display:flex;align-items:center;gap:18px;
+    min-height:66px;flex-wrap:wrap;
+  }
+  .brand{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+  .brand svg{display:block;}
+  .brand-text{
+    font-weight:800;font-size:16.5px;letter-spacing:.5px;
+    background:linear-gradient(92deg,var(--acc),var(--acc-2) 60%,var(--pink));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    white-space:nowrap;
+  }
+  nav.main{margin-left:auto;}
+  nav.main ul{
+    list-style:none;display:flex;gap:6px;margin:0;padding:0;flex-wrap:wrap;
+  }
+  nav.main a{
+    display:block;padding:7px 12px;border-radius:10px;
+    font-size:14.5px;color:var(--ink-2);transition:.2s;
+  }
+  nav.main a:hover,nav.main a:focus-visible{
+    color:var(--ink);background:rgba(88,225,200,.12);
+  }
+
+  /* 首屏 */
+  .hero{padding:56px 0 34px;position:relative;overflow:hidden;}
+  .hero-grid{
+    display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+    gap:40px;align-items:center;
+  }
+  .tag{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:13px;color:var(--acc);
+    border:1px solid rgba(88,225,200,.35);
+    background:rgba(88,225,200,.08);
+    padding:5px 12px;border-radius:999px;margin-bottom:18px;
+  }
+  .tag i{width:7px;height:7px;border-radius:50%;background:var(--acc);display:block;}
+  h1{
+    font-size:clamp(28px,4.6vw,46px);
+    font-weight:900;letter-spacing:1px;
+    background:linear-gradient(100deg,#ffffff,#cfe4ff 45%,var(--acc));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero-lead{
+    margin-top:18px;color:var(--ink-2);font-size:16px;max-width:34em;
+  }
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:12px 22px;border-radius:12px;font-size:15px;font-weight:700;
+    transition:.2s;border:1px solid transparent;
+  }
+  .btn-primary{
+    background:linear-gradient(96deg,var(--acc),#5fd3ff);
+    color:#07211d;box-shadow:0 10px 26px rgba(88,225,200,.22);
+  }
+  .btn-primary:hover{transform:translateY(-2px);}
+  .btn-ghost{border-color:var(--line);color:var(--ink);background:rgba(255,255,255,.03);}
+  .btn-ghost:hover{border-color:var(--acc);color:var(--acc);}
+  .btn[aria-disabled="true"]{opacity:.55;cursor:not-allowed;}
+
+  .hero-visual{
+    position:relative;border-radius:22px;
+    border:1px solid var(--line);
+    background:linear-gradient(160deg,rgba(88,225,200,.10),rgba(255,122,182,.07) 60%,transparent);
+    padding:26px;min-height:270px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .hero-visual svg{width:100%;max-width:330px;height:auto;}
+  .float-chip{
+    position:absolute;font-size:12.5px;color:var(--ink);
+    background:rgba(20,24,52,.92);border:1px solid var(--line);
+    padding:6px 11px;border-radius:10px;white-space:nowrap;
+  }
+  .chip-a{top:18px;left:18px;}
+  .chip-b{bottom:18px;right:18px;color:var(--acc-2);}
+
+  /* 通用区块 */
+  section{padding:44px 0;}
+  .sec-head{max-width:46em;margin-bottom:26px;}
+  .kicker{
+    font-size:13px;letter-spacing:2px;color:var(--acc);
+    text-transform:uppercase;font-weight:700;margin-bottom:10px;
+  }
+  h2{font-size:clamp(21px,2.6vw,27px);font-weight:800;}
+  .sec-head p{margin-top:12px;color:var(--ink-2);font-size:15.5px;}
+
+  .grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;}
+  .grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;}
+  .card{
+    background:var(--card);border:1px solid var(--line);
+    border-radius:var(--radius);padding:22px;transition:.2s;
+  }
+  .card:hover{border-color:rgba(88,225,200,.45);transform:translateY(-3px);}
+  .card h3{font-size:17px;margin-bottom:10px;display:flex;align-items:center;gap:9px;}
+  .card h3 svg{flex-shrink:0;}
+  .card p{color:var(--ink-2);font-size:14.8px;}
+  .card .meta{margin-top:14px;font-size:12.5px;color:var(--acc);letter-spacing:.5px;}
+
+  /* 访问步骤 */
+  .steps{counter-reset:step;display:grid;gap:14px;}
+  .step{
+    display:grid;grid-template-columns:48px minmax(0,1fr);gap:16px;align-items:start;
+    background:var(--bg-2);border:1px solid var(--line);
+    border-radius:var(--radius);padding:18px 20px;
+  }
+  .step::before{
+    counter-increment:step;content:counter(step,decimal-leading-zero);
+    font-weight:900;font-size:19px;color:var(--acc-2);
+    line-height:1.4;
+  }
+  .step h3{font-size:16px;margin-bottom:6px;}
+  .step p{color:var(--ink-2);font-size:14.6px;}
+
+  /* 筛选 */
+  .filter-bar{
+    display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;align-items:center;
+  }
+  .filter-bar label{font-size:14px;color:var(--ink-2);}
+  .filter-bar input{
+    background:var(--bg-2);border:1px solid var(--line);border-radius:10px;
+    padding:10px 14px;color:var(--ink);font-size:14.5px;min-width:220px;
+    font-family:inherit;outline:none;transition:.2s;
+  }
+  .filter-bar input:focus{border-color:var(--acc);box-shadow:0 0 0 3px rgba(88,225,200,.14);}
+  .filter-bar button{
+    background:rgba(88,225,200,.12);border:1px solid rgba(88,225,200,.4);
+    color:var(--acc);border-radius:10px;padding:10px 16px;font-size:14px;
+    font-family:inherit;cursor:pointer;transition:.2s;
+  }
+  .filter-bar button:hover{background:rgba(88,225,200,.22);}
+  .count-note{font-size:13px;color:var(--ink-2);margin-bottom:14px;}
+  .faq-list{display:grid;gap:12px;}
+  .faq-item{
+    background:var(--card);border:1px solid var(--line);
+    border-radius:12px;padding:16px 18px;
+  }
+  .faq-item h3{font-size:15.5px;margin-bottom:6px;color:var(--ink);}
+  .faq-item p{font-size:14.4px;color:var(--ink-2);}
+  .faq-item.hide{display:none;}
+  .empty-tip{display:none;color:var(--ink-2);font-size:14.5px;padding:16px;border:1px dashed var(--line);border-radius:12px;}
+
+  /* 提示条 */
+  .notice{
+    margin-top:22px;display:flex;gap:14px;align-items:flex-start;
+    background:rgba(247,197,72,.07);border:1px solid rgba(247,197,72,.3);
+    border-radius:14px;padding:16px 18px;font-size:14.4px;color:#f2e4bb;
+  }
+  .notice svg{flex-shrink:0;margin-top:3px;}
+
+  /* 页尾 */
+  footer.site{
+    border-top:1px solid var(--line);
+    background:rgba(10,12,26,.7);
+    padding:34px 0 40px;margin-top:20px;
+  }
+  .foot-grid{display:flex;gap:26px;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;}
+  .foot-brand{display:flex;align-items:center;gap:9px;margin-bottom:10px;}
+  .foot-brand span{
+    font-weight:800;font-size:15px;
+    background:linear-gradient(92deg,var(--acc),var(--acc-2));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .foot-note{font-size:13.5px;color:var(--ink-2);max-width:42em;}
+  .foot-links{display:flex;gap:18px;flex-wrap:wrap;font-size:13.5px;}
+  .foot-links a{color:var(--ink-2);}
+  .foot-links a:hover{color:var(--acc);}
+  .copy{margin-top:20px;padding-top:16px;border-top:1px solid var(--line);font-size:12.8px;color:#7c86ab;}
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:26px;}
+    .hero-visual{min-height:200px;order:2;}
+    .grid-3{grid-template-columns:1fr;}
+    .grid-2{grid-template-columns:1fr;}
+    .hero{padding:36px 0 22px;}
+    section{padding:32px 0;}
+  }
+  @media (max-width:620px){
+    body{font-size:15.5px;}
+    .navbar{min-height:auto;padding:10px 0;gap:10px;}
+    nav.main{width:100%;margin-left:0;}
+    nav.main ul{gap:4px;}
+    nav.main a{padding:6px 10px;font-size:14px;background:rgba(255,255,255,.04);}
+    .hero-actions .btn{flex:1 1 auto;justify-content:center;}
+    .step{grid-template-columns:38px minmax(0,1fr);padding:16px;}
+    .filter-bar input{min-width:0;width:100%;}
+    .filter-bar button{width:100%;}
+  }
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap navbar">
+    <a class="brand" href="#top" aria-label="91次元官网入口 首页">
+      <svg width="34" height="34" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="15" fill="#141834"/>
+        <circle cx="32" cy="32" r="17" fill="none" stroke="#58e1c8" stroke-width="4"/>
+        <circle cx="32" cy="32" r="7" fill="#f7c548"/>
+        <circle cx="32" cy="32" r="24" fill="none" stroke="#ff7ab6" stroke-width="1.6" stroke-dasharray="4 7" opacity=".8"/>
+      </svg>
+      <span class="brand-text">91次元官网入口</span>
+    </a>
+    <nav class="main" aria-label="主导航">
+      <ul>
+        <li><a href="#position">页面定位</a></li>
+        <li><a href="#access">访问方式</a></li>
+        <li><a href="#sections">内容分区</a></li>
+        <li><a href="#faq">常见问题</a></li>
+        <li><a href="#notice">识别要点</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 首屏 -->
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="tag"><i></i>站点入口说明页</span>
+        <h1>91次元官网入口</h1>
+        <p class="hero-lead">
+          本页围绕91次元官网入口这一访问需求展开，说明入口页面的定位、站内内容分区的组织方式，以及访问者在进入前后需要留意的识别细节。页面本身是入口说明，不代替站内内容。
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#access">
+            查看访问方式
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="#sections">浏览内容分区</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <span class="float-chip chip-a">入口识别</span>
+        <svg viewBox="0 0 300 220" role="img" aria-label="入口页面结构示意插画">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#58e1c8" stop-opacity=".9"/>
+              <stop offset="1" stop-color="#5fd3ff" stop-opacity=".5"/>
+            </linearGradient>
+          </defs>
+          <rect x="26" y="26" width="248" height="168" rx="16" fill="#141834" stroke="#2b3266"/>
+          <rect x="44" y="46" width="86" height="10" rx="5" fill="url(#g1)"/>
+          <rect x="44" y="68" width="150" height="7" rx="3.5" fill="#39406e"/>
+          <rect x="44" y="84" width="120" height="7" rx="3.5" fill="#39406e"/>
+          <rect x="44" y="108" width="62" height="52" rx="9" fill="#1d2450" stroke="#3a4380"/>
+          <rect x="116" y="108" width="62" height="52" rx="9" fill="#1d2450" stroke="#3a4380"/>
+          <rect x="188" y="108" width="62" height="52" rx="9" fill="#1d2450" stroke="#58e1c8" stroke-opacity=".7"/>
+          <circle cx="75" cy="134" r="9" fill="none" stroke="#58e1c8" stroke-width="3"/>
+          <rect x="128" y="126" width="38" height="6" rx="3" fill="#5a6299"/>
+          <rect x="128" y="140" width="26" height="6" rx="3" fill="#5a6299"/>
+          <rect x="200" y="126" width="38" height="6" rx="3" fill="#f7c548"/>
+          <rect x="200" y="140" width="26" height="6" rx="3" fill="#5a6299"/>
+        </svg>
+        <span class="float-chip chip-b">内容分区</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 页面定位 -->
+  <section id="position">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">页面定位</div>
+        <h2>先弄清楚这个入口承担什么任务</h2>
+        <p>访问者提到91次元官网入口时，通常想确认的是“从哪里进入、进去之后能看到什么”。因此本页把入口说明与站内内容分区拆开呈现，不做站内内容的替代展示。</p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <h3>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#58e1c8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            访问需求
+          </h3>
+          <p>核心是找到可靠入口并了解进入后的页面结构。查询者多为回访用户，更关心入口是否稳定、内容分区是否与记忆一致。</p>
+          <div class="meta">需求类型 · 入口确认</div>
+        </article>
+        <article class="card">
+          <h3>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f7c548" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 9h18M8 4v16"/></svg>
+            内容边界
+          </h3>
+          <p>本页只描述入口页面的组织方式与识别要点，不转述站内具体条目，也不承诺站内内容的更新节奏与数量。</p>
+          <div class="meta">范围 · 入口说明</div>
+        </article>
+        <article class="card">
+          <h3>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff7ab6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4v6c0 5-3.6 7.6-8 8-4.4-.4-8-3-8-8V7z"/></svg>
+            阅读顺序
+          </h3>
+          <p>建议按“定位—访问—分区—问答”的顺序阅读，这样能先建立对91次元官网入口的整体印象，再看细节。</p>
+          <div class="meta">阅读路径 · 四段</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 访问方式 -->
+  <section id="access" style="background:linear-gradient(180deg,rgba(20,24,52,.55),transparent);">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">访问方式</div>
+        <h2>进入91次元官网入口前的四步确认</h2>
+        <p>以下步骤用于梳理访问路径，属于通用浏览习惯，不涉及任何后台操作或账号权限。</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div>
+            <h3>确认地址栏与页面标题一致</h3>
+            <p>打开页面后，先看浏览器标签标题与地址栏域名是否为同一来源。标题与域名不匹配时，宜暂停操作，回到已知来源重新进入。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>核对页面顶部品牌与导航</h3>
+            <p>正常的入口页面顶部应保持统一的品牌标识与导航条目。若导航文字残缺、跳转目标异常，说明当前页面可能并非预期的91次元官网入口。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>浏览首屏与分区结构</h3>
+            <p>首屏通常给出页面说明与主要入口，分区则承担内容导航。先看清分区名称，再决定去往哪一类内容，能减少反复跳转。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>记录可用路径以便回访</h3>
+            <p>把确认过的入口路径记录在书签或笔记中，下次访问可直接比对，减少在搜索结果里反复辨别的时间成本。</p>
+          </div>
+        </div>
+      </div>
+      <div class="notice" id="notice">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f7c548" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 16H3z"/><path d="M12 9v5M12 17h.01"/></svg>
+        <div>
+          <strong>识别要点：</strong>页面中出现的要求填写密码、下载安装包或索要账号信息的弹层，均不属于正常浏览流程。遇到此类情况应直接关闭页面，不要继续操作。本页提供的下载入口目前处于占位状态，暂不可用。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 内容分区 -->
+  <section id="sections">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">内容分区</div>
+        <h2>入口之后常见的内容组织方式</h2>
+        <p>不同阶段的入口页面在分区命名上会有差异，下面按常见职能归类，便于对照理解，不代表站内固定栏目。</p>
+      </div>
+      <div class="grid-2">
+        <article class="card">
+          <h3>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#58e1c8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16M4 12h10M4 19h13"/></svg>
+            聚合展示区
+          </h3>
+          <p>以卡片或列表形式集中呈现近期内容，通常配有分类标签与缩略图。访问者可先在此判断内容方向，再进入具体条目。</p>
+        </article>
+        <article class="card">
+          <h3>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f7c548" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg>
+            分类索引区
+          </h3>
+          <p>按题材、形式或时间维度划分入口，承担快速筛选作用。分类名称往往最能反映一个入口页面的组织思路。</p>
+        </article>
+        <article class="card">
+          <h3>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff7ab6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>
+            详情阅读区
+          </h3>
+          <p>点击条目后进入的正文页面，通常包含标题、说明与相关推荐。阅读区的信息密度决定停留时长，也影响回访意愿。</p>
+        </article>
+        <article class="card">
+          <h3>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5fd3ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 1 1 16 0"/><path d="M4 12v5a2 2 0 0 0 2 2h2v-7H6"/><path d="M20 12v5a2 2 0 0 1-2 2h-2v-7h2"/></svg>
+            说明与帮助区
+          </h3>
+          <p>承接访问中的常见疑问，如入口变动、页面加载异常的处理思路。这部分内容越清晰，访问者的判断成本越低。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 常见问题 + 筛选 -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">常见问题</div>
+        <h2>围绕91次元官网入口的高频疑问</h2>
+        <p>以下条目按问题类型归类，可在输入框中输入关键词快速过滤，结果直接在当前页面显示。</p>
+      </div>
+
+      <div class="filter-bar">
+        <label for="faqSearch">筛选问题</label>
+        <input id="faqSearch" type="search" placeholder="输入关键词，如：入口、加载、书签" autocomplete="off">
+        <button type="button" id="faqReset">重置筛选</button>
+      </div>
+      <p class="count-note" id="faqCount" aria-live="polite">当前显示 5 条问题</p>
+
+      <div class="faq-list" id="faqList">
+        <article class="faq-item" data-keywords="入口 地址 辨别">
+          <h3>怎样确认找到的是91次元官网入口？</h3>
+          <p>比对来源、标题与域名三者是否一致，再看页面顶部品牌与导航是否完整。三处信息互相印证时，可信度更高。</p>
+        </article>
+        <article class="faq-item" data-keywords="加载 打不开 异常">
+          <h3>页面加载不出来应该先做什么？</h3>
+          <p>先刷新一次并检查网络连接，再确认浏览器版本是否过旧。若其他站点正常而本页异常，可稍后重试，避免连续快速刷新。</p>
+        </article>
+        <article class="faq-item" data-keywords="书签 回访 记录">
+          <h3>回访时如何减少重新辨别的时间？</h3>
+          <p>把确认过的路径存入书签，并在名称中标注确认日期。下次访问时直接核对日期与页面标题，即可快速判断是否为同一入口。</p>
+        </article>
+        <article class="faq-item" data-keywords="内容 更新 范围">
+          <h3>本页会介绍站内的具体内容吗？</h3>
+          <p>本页聚焦91次元官网入口的访问说明与页面结构，不逐一介绍站内条目，也不对内容数量与更新频率作出承诺。</p>
+        </article>
+        <article class="faq-item" data-keywords="安全 弹层 账号">
+          <h3>遇到索要账号信息的弹层怎么处理？</h3>
+          <p>正常浏览流程不需要在入口页提交账号信息。遇到此类弹层应直接关闭页面，不要输入任何内容，并回到已知来源重新进入。</p>
+        </article>
+      </div>
+      <p class="empty-tip" id="faqEmpty">没有匹配的问题，试试更短的关键词。</p>
+
+      <div class="hero-actions" style="margin-top:26px;">
+        <a class="btn btn-ghost" href="#access">返回访问方式</a>
+        <a class="btn btn-ghost" href="#sections">查看内容分区</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <svg width="22" height="22" viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="15" fill="#141834"/>
+            <circle cx="32" cy="32" r="17" fill="none" stroke="#58e1c8" stroke-width="4"/>
+            <circle cx="32" cy="32" r="7" fill="#f7c548"/>
+          </svg>
+          <span>91次元官网入口</span>
+        </div>
+        <p class="foot-note">
+          本页是91次元官网入口的说明性首页，用于呈现入口定位、访问确认步骤、内容分区与常见问题，帮助访问者建立清晰的浏览路径。
+        </p>
+      </div>
+      <div class="foot-links">
+        <a href="#position">页面定位</a>
+        <a href="#access">访问方式</a>
+        <a href="#sections">内容分区</a>
+        <a href="#faq">常见问题</a>
+      </div>
+    </div>
+    <p class="copy">© 91次元官网入口 · 页面内容为入口说明，具体站内信息以实际访问为准。</p>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var input = document.getElementById('faqSearch');
+    var reset = document.getElementById('faqReset');
+    var items = Array.prototype.slice.call(document.querySelectorAll('#faqList .faq-item'));
+    var count = document.getElementById('faqCount');
+    var empty = document.getElementById('faqEmpty');
+
+    function apply(){
+      var q = (input.value || '').trim().toLowerCase();
+      var shown = 0;
+      items.forEach(function(el){
+        var text = (el.textContent + ' ' + (el.getAttribute('data-keywords')||'')).toLowerCase();
+        var hit = q === '' || text.indexOf(q) !== -1;
+        el.classList.toggle('hide', !hit);
+        if(hit) shown++;
+      });
+      count.textContent = '当前显示 ' + shown + ' 条问题';
+      empty.style.display = shown === 0 ? 'block' : 'none';
+    }
+
+    input.addEventListener('input', apply);
+    reset.addEventListener('click', function(){
+      input.value = '';
+      apply();
+      input.focus();
+    });
+    apply();
+  })();
+</script>
+</body>
+  </html>
