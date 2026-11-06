@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>寸止挑战在线-寸止挑战在线玩法_计时节奏与自控练习</title>
+<meta name="description" content="寸止挑战在线首页：了解寸止挑战在线的计时玩法、节奏分级、练习记录方式与自控训练思路，按自己的节奏完成一次线上寸止挑战。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%230f1b2b'/%3E%3Ccircle cx='32' cy='32' r='20' fill='none' stroke='%2338d6b8' stroke-width='3'/%3E%3Cpath d='M32 16v16l11 7' stroke='%23f5c76a' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#0b1220;
+    --bg2:#0f1b2b;
+    --panel:#132133;
+    --panel2:#17293d;
+    --line:rgba(120,170,200,.18);
+    --txt:#dbe7f2;
+    --muted:#8fa7bb;
+    --teal:#38d6b8;
+    --gold:#f5c76a;
+    --radius:16px;
+    --maxw:1120px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(900px 500px at 80% -10%, rgba(56,214,184,.12), transparent 60%),
+      radial-gradient(700px 400px at 0% 10%, rgba(245,199,106,.08), transparent 55%),
+      var(--bg);
+    color:var(--txt);
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,"Segoe UI",sans-serif;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--teal);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px;}
+
+  /* header */
+  header.site{
+    position:sticky;top:0;z-index:50;
+    background:rgba(11,18,32,.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:16px;padding:12px 0;flex-wrap:wrap;
+  }
+  .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px;color:var(--txt);letter-spacing:.5px;}
+  .logo svg{width:30px;height:30px;flex:none;}
+  .nav ul{list-style:none;display:flex;gap:6px;margin:0;padding:0;flex-wrap:wrap;}
+  .nav ul a{
+    display:block;padding:6px 12px;border-radius:999px;color:var(--muted);font-size:14px;
+    transition:.2s;
+  }
+  .nav ul a:hover{color:var(--txt);background:var(--panel);text-decoration:none;}
+
+  /* hero */
+  .hero{padding:56px 0 40px;}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:13px;color:var(--gold);letter-spacing:2px;
+    border:1px solid rgba(245,199,106,.35);border-radius:999px;padding:4px 14px;margin-bottom:18px;
+  }
+  h1{
+    font-size:clamp(30px,5.2vw,50px);
+    line-height:1.15;margin:0 0 18px;letter-spacing:1px;
+    background:linear-gradient(100deg,#ffffff 10%,#38d6b8 60%,#f5c76a 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero p.lead{font-size:16px;color:#b9cbdb;margin:0 0 26px;max-width:34em;}
+  .actions{display:flex;gap:12px;flex-wrap:wrap;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:12px 22px;border-radius:12px;font-size:15px;font-weight:600;
+    border:1px solid transparent;cursor:pointer;transition:.2s;
+  }
+  .btn-primary{background:linear-gradient(120deg,#38d6b8,#2bb49c);color:#062019;}
+  .btn-primary:hover{filter:brightness(1.08);text-decoration:none;color:#062019;}
+  .btn-ghost{border-color:var(--line);color:var(--txt);background:transparent;}
+  .btn-ghost:hover{background:var(--panel);text-decoration:none;}
+
+  /* timer card */
+  .timer-card{
+    background:linear-gradient(160deg,var(--panel2),var(--panel));
+    border:1px solid var(--line);border-radius:22px;
+    padding:26px 24px;text-align:center;
+    box-shadow:0 20px 50px -20px rgba(0,0,0,.7);
+  }
+  .timer-card .label{font-size:13px;color:var(--muted);letter-spacing:2px;}
+  .clock{
+    font-family:"SF Mono",Menlo,Consolas,monospace;
+    font-size:clamp(38px,7vw,58px);font-weight:700;color:var(--gold);
+    margin:6px 0 4px;letter-spacing:2px;
+  }
+  .phase{font-size:14px;color:var(--teal);min-height:22px;margin-bottom:14px;}
+  .timer-controls{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+  .timer-controls .btn{padding:9px 18px;font-size:14px;}
+  .timer-note{font-size:12px;color:var(--muted);margin-top:12px;}
+
+  /* sections */
+  section{padding:46px 0;}
+  .sec-head{max-width:640px;margin-bottom:26px;}
+  .sec-head h2{
+    font-size:clamp(21px,3vw,27px);margin:0 0 8px;letter-spacing:.5px;
+    color:#fff;
+  }
+  .sec-head h2::before{
+    content:"";display:inline-block;width:8px;height:8px;border-radius:50%;
+    background:var(--teal);margin-right:10px;vertical-align:middle;
+  }
+  .sec-head p{margin:0;color:var(--muted);font-size:15px;}
+
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .card{
+    background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px 20px;transition:.25s;
+  }
+  .card:hover{border-color:rgba(56,214,184,.4);transform:translateY(-2px);}
+  .card .ico{
+    width:38px;height:38px;border-radius:10px;display:grid;place-items:center;
+    background:rgba(56,214,184,.12);margin-bottom:14px;
+  }
+  .card h3{margin:0 0 8px;font-size:16px;color:#fff;}
+  .card p{margin:0;font-size:14px;color:#a9bfd2;}
+
+  /* steps */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:step;}
+  .step{
+    position:relative;background:var(--panel);border:1px solid var(--line);
+    border-radius:var(--radius);padding:22px 18px 18px;
+  }
+  .step::before{
+    counter-increment:step;content:"0" counter(step);
+    font-family:"SF Mono",Menlo,Consolas,monospace;
+    font-size:13px;color:var(--gold);letter-spacing:1px;
+  }
+  .step h3{margin:8px 0 6px;font-size:15px;color:#fff;}
+  .step p{margin:0;font-size:13.5px;color:#a9bfd2;}
+
+  /* levels table */
+  .levels{width:100%;border-collapse:collapse;font-size:14px;overflow:hidden;border-radius:12px;}
+  .levels th,.levels td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line);}
+  .levels th{background:var(--panel2);color:var(--teal);font-weight:600;font-size:13px;letter-spacing:1px;}
+  .levels td{background:var(--panel);color:#bcd0e0;}
+  .levels tr:last-child td{border-bottom:none;}
+  .tag{
+    display:inline-block;padding:2px 10px;border-radius:999px;font-size:12px;
+    background:rgba(245,199,106,.14);color:var(--gold);border:1px solid rgba(245,199,106,.3);
+  }
+
+  /* split feature */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:stretch;}
+  .panel{
+    background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:24px;
+  }
+  .panel h3{margin:0 0 12px;font-size:17px;color:#fff;}
+  .panel ul{margin:0;padding-left:18px;color:#a9bfd2;font-size:14.5px;}
+  .panel li{margin-bottom:8px;}
+  .panel li::marker{color:var(--teal);}
+
+  .quote{
+    border-left:3px solid var(--gold);padding:6px 0 6px 18px;
+    color:#c6d6e4;font-size:14.5px;margin:16px 0 0;
+  }
+
+  /* faq */
+  details{
+    background:var(--panel);border:1px solid var(--line);border-radius:12px;
+    padding:14px 18px;margin-bottom:12px;
+  }
+  details[open]{border-color:rgba(56,214,184,.35);}
+  summary{cursor:pointer;font-size:15px;color:#fff;font-weight:600;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+  summary::-webkit-details-marker{display:none;}
+  summary::after{content:"＋";color:var(--teal);font-weight:400;}
+  details[open] summary::after{content:"－";}
+  details p{margin:10px 0 0;font-size:14px;color:#a9bfd2;}
+
+  /* footer */
+  footer{
+    border-top:1px solid var(--line);margin-top:30px;padding:34px 0 40px;
+    background:rgba(15,27,43,.6);
+  }
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:28px;}
+  .foot-grid h4{margin:0 0 12px;font-size:14px;color:#fff;letter-spacing:1px;}
+  .foot-grid p,.foot-grid a{font-size:13.5px;color:var(--muted);}
+  .foot-grid ul{list-style:none;margin:0;padding:0;}
+  .foot-grid li{margin-bottom:8px;}
+  .foot-bottom{
+    margin-top:26px;padding-top:18px;border-top:1px solid var(--line);
+    font-size:12.5px;color:#6f8699;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  }
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:28px;}
+    .grid-3{grid-template-columns:1fr 1fr;}
+    .steps{grid-template-columns:1fr 1fr;}
+    .split{grid-template-columns:1fr;}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:560px){
+    .grid-3,.steps{grid-template-columns:1fr;}
+    .hero{padding:34px 0 20px;}
+    .nav ul a{padding:5px 9px;font-size:13px;}
+    .foot-grid{grid-template-columns:1fr;}
+    section{padding:32px 0;}
+    .levels th,.levels td{padding:10px 8px;font-size:13px;}
+  }
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="#top" aria-label="寸止挑战在线 首页">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <circle cx="32" cy="32" r="30" fill="#0f1b2b" stroke="#38d6b8" stroke-width="2"/>
+        <circle cx="32" cy="32" r="19" fill="none" stroke="#38d6b8" stroke-width="2.5" opacity=".7"/>
+        <path d="M32 16v16l11 7" stroke="#f5c76a" stroke-width="4" fill="none" stroke-linecap="round"/>
+      </svg>
+      <span>寸止挑战在线</span>
+    </a>
+    <nav aria-label="主导航">
+      <ul>
+        <li><a href="#howto">玩法步骤</a></li>
+        <li><a href="#levels">节奏分级</a></li>
+        <li><a href="#record">记录方式</a></li>
+        <li><a href="#faq">常见问题</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">计时 · 节奏 · 自控练习</span>
+        <h1>寸止挑战在线</h1>
+        <p class="lead">
+          寸止挑战在线是一个围绕“到点即停”的计时练习页面。你只需给出一个时长与一个节奏档位，页面用倒计时与阶段性提示，帮你在每一次临近终点时练习停住。
+          无需注册，打开即可开始一轮寸止挑战在线练习；每一轮结束后，可以手动记录本次时长与完成情况，方便回看自己的节奏变化。
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#howto">开始了解玩法</a>
+          <a class="btn btn-ghost" href="#levels">查看节奏分级</a>
+        </div>
+      </div>
+      <div class="timer-card" aria-label="计时演示">
+        <div class="label">练习计时器 · 演示</div>
+        <div class="clock" id="clock">00:60</div>
+        <div class="phase" id="phase">选择时长后开始</div>
+        <div class="timer-controls">
+          <button class="btn btn-primary" id="startBtn" type="button">开始计时</button>
+          <button class="btn btn-ghost" id="resetBtn" type="button">重置</button>
+        </div>
+        <div class="timer-note">演示为 60 秒基础档；正式练习可在分级表中选择更长时长。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 信息卡片 -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>寸止挑战在线在练什么</h2>
+        <p>它不是一个比快慢的竞赛，而是一种在明确时间边界内控制节奏的自我练习。</p>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="ico">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38d6b8" stroke-width="2" stroke-linecap="round">
+              <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+            </svg>
+          </div>
+          <h3>明确的停止点</h3>
+          <p>每轮练习都有清晰的剩余时间显示，越接近终点越需要留意节奏，让“停”发生在计划的位置，而不是凭感觉。</p>
+        </div>
+        <div class="card">
+          <div class="ico">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38d6b8" stroke-width="2" stroke-linecap="round">
+              <path d="M3 17l5-6 4 3 4-7 5 4"/><path d="M3 21h18"/>
+            </svg>
+          </div>
+          <h3>可调的强度</h3>
+          <p>从短时长到长时长，从缓节奏到紧节奏，档位由你决定。寸止挑战在线的重点是找到当前能稳定完成的区间。</p>
+        </div>
+        <div class="card">
+          <div class="ico">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38d6b8" stroke-width="2" stroke-linecap="round">
+              <rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/>
+            </svg>
+          </div>
+          <h3>可回看的记录</h3>
+          <p>每轮结束手动记下时长与是否按点停止，几次之后就能看出自己在哪种档位更容易失手，据此调整安排。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 玩法步骤 -->
+  <section id="howto">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>一轮寸止挑战在线的完整流程</h2>
+        <p>四个步骤，从选时长到记录结果，全程只需几分钟到十几分钟。</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <h3>选定时长</h3>
+          <p>依据下方分级表选择一个自己能完成的目标时长，初次练习建议从短档开始。</p>
+        </div>
+        <div class="step">
+          <h3>确认节奏</h3>
+          <p>决定本轮采用缓节奏还是紧节奏。节奏越紧，留给调整的余量越小。</p>
+        </div>
+        <div class="step">
+          <h3>开始计时</h3>
+          <p>点击开始，按提示留意剩余时间；越接近终点，越把注意力放在“停住”这件事上。</p>
+        </div>
+        <div class="step">
+          <h3>记录本轮</h3>
+          <p>结束后记下时长与结果。连续几轮后再回看，比单轮结果更有参考意义。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 分级表 -->
+  <section id="levels">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>节奏分级与建议时长</h2>
+        <p>下表为练习安排的建议区间，具体时长可按个人情况调整，不必逐级挑战。</p>
+      </div>
+      <table class="levels">
+        <thead>
+          <tr><th>档位</th><th>建议时长</th><th>节奏</th><th>适合阶段</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="tag">入门</span></td>
+            <td>30–60 秒</td>
+            <td>缓</td>
+            <td>第一次接触寸止挑战在线，熟悉计时与提示节奏。</td>
+          </tr>
+          <tr>
+            <td><span class="tag">基础</span></td>
+            <td>1–3 分钟</td>
+            <td>缓至中</td>
+            <td>已能稳定完成短档，开始拉长单轮时长。</td>
+          </tr>
+          <tr>
+            <td><span class="tag">进阶</span></td>
+            <td>3–8 分钟</td>
+            <td>中</td>
+            <td>注意力的持续保持成为主要难点，适合分段练习。</td>
+          </tr>
+          <tr>
+            <td><span class="tag">挑战</span></td>
+            <td>8 分钟以上</td>
+            <td>紧</td>
+            <td>在状态良好时尝试，不建议连续多轮进行。</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="quote">分级仅作为安排练习的参照，不代表任何能力评定。出现疲劳或注意力明显下降时，应缩短时长或结束练习。</p>
+    </div>
+  </section>
+
+  <!-- 记录与建议 -->
+  <section id="record">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>把每次结果记下来</h2>
+        <p>寸止挑战在线的价值不在于单次成绩，而在于一段时间的记录对比。</p>
+      </div>
+      <div class="split">
+        <div class="panel">
+          <h3>建议记录的三项内容</h3>
+          <ul>
+            <li>本轮时长：实际计时长度，便于横向比较。</li>
+            <li>停止位置：是否在计划的时间点附近停住。</li>
+            <li>主观状态：练习前是否疲惫、注意力是否集中。</li>
+          </ul>
+          <p class="quote">记录不必复杂，一张便签或表格即可。关键是连续，而不是详尽。</p>
+        </div>
+        <div class="panel">
+          <h3>安排练习的几点提示</h3>
+          <ul>
+            <li>单次练习控制在可承受范围内，避免长时间连续计时。</li>
+            <li>把练习放在相对安静、不被打断的时间段。</li>
+            <li>每轮之间留出休息，不必追求轮数。</li>
+            <li>状态不佳时降低档位，比勉强完成更有意义。</li>
+          </ul>
+          <p class="quote">练习节奏应服务于生活安排，而不是反过来占用大量时间。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>关于寸止挑战在线的常见问题</h2>
+        <p>初次访问时最常被问到的几点，集中在这里说明。</p>
+      </div>
+
+      <details open>
+        <summary>需要注册账号才能使用吗？</summary>
+        <p>不需要。寸止挑战在线以页面内计时为主，打开页面即可开始一轮练习，练习记录由你自己保存。</p>
+      </details>
+      <details>
+        <summary>计时器可以自定义时长吗？</summary>
+        <p>首页演示为 60 秒基础档，用于展示计时与阶段提示的形态。正式练习可按分级表中的建议区间自行安排时长，并配合自己的计时工具同步进行。</p>
+      </details>
+      <details>
+        <summary>一轮练习多长时间比较合适？</summary>
+        <p>没有统一标准。初次建议从 30–60 秒开始，能稳定完成后逐步拉长；如果中途注意力明显分散，缩短时长比硬撑更合适。</p>
+      </details>
+      <details>
+        <summary>练习结果会保存在服务器上吗？</summary>
+        <p>不会。页面不收集练习数据，所有记录都需要你自行保存。这也是寸止挑战在线保持轻量的原因之一。</p>
+      </details>
+      <details>
+        <summary>可以下载到本地使用吗？</summary>
+        <p>页面提供下载入口，供后续版本使用。当前入口尚未开放，可先直接在线使用。</p>
+      </details>
+
+      <div class="actions" style="margin-top:24px;">
+        <a class="btn btn-primary" href="#top">回到寸止挑战在线首页</a>
+        <a class="btn btn-ghost" href="#" data-download-placeholder="true" aria-disabled="true" tabindex="-1" style="pointer-events:none;opacity:.55;">下载</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h4>寸止挑战在线</h4>
+        <p>一个以计时与节奏提示为核心的线上练习页面。内容围绕寸止挑战在线的玩法说明、档位安排与记录方式展开，帮助访问者按自己的节奏完成练习。</p>
+      </div>
+      <div>
+        <h4>页面导航</h4>
+        <ul>
+          <li><a href="#howto">玩法步骤</a></li>
+          <li><a href="#levels">节奏分级</a></li>
+          <li><a href="#record">记录方式</a></li>
+          <li><a href="#faq">常见问题</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>使用说明</h4>
+        <ul>
+          <li>无需注册，直接使用</li>
+          <li>练习记录由本地保存</li>
+          <li>按个人状态调整时长</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>寸止挑战在线 · 计时练习页面</span>
+      <span>请根据自身状态合理安排练习时长</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var total = 60;
+  var remain = total;
+  var timer = null;
+  var running = false;
+  var clock = document.getElementById('clock');
+  var phase = document.getElementById('phase');
+  var startBtn = document.getElementById('startBtn');
+  var resetBtn = document.getElementById('resetBtn');
+
+  function fmt(s){
+    var m = Math.floor(s/60), sec = s%60;
+    return (m<10?'0':'')+m+':'+(sec<10?'0':'')+sec;
+  }
+  function render(){
+    clock.textContent = fmt(remain);
+  }
+  function tick(){
+    if(remain > 0){
+      remain--;
+      render();
+      if(remain === Math.floor(total*0.66)){ phase.textContent = '中段 · 保持节奏'; }
+      if(remain === Math.floor(total*0.33)){ phase.textContent = '后段 · 留意剩余时间'; }
+      if(remain === 10){ phase.textContent = '最后 10 秒 · 准备停住'; }
+    } else {
+      clearInterval(timer);
+      running = false;
+      startBtn.textContent = '再来一轮';
+      phase.textContent = '本轮结束 · 记录本次结果';
+    }
+  }
+  startBtn.addEventListener('click', function(){
+    if(running) return;
+    if(remain <= 0){ remain = total; render(); }
+    running = true;
+    startBtn.textContent = '计时中…';
+    phase.textContent = '开始 · 专注当前节奏';
+    timer = setInterval(tick, 1000);
+  });
+  resetBtn.addEventListener('click', function(){
+    clearInterval(timer);
+    running = false;
+    remain = total;
+    render();
+    startBtn.textContent = '开始计时';
+    phase.textContent = '选择时长后开始';
+  });
+  render();
+})();
+</script>
+</body>
+</html>
