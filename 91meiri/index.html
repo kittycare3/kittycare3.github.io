@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>91每日大赛-每日大赛热点榜单_黑料爆料吃瓜合集</title>
+<meta name="description" content="91每日大赛聚合每日热点大赛内容，集中呈现爆料、黑料与吃瓜话题的更新条目与榜单，方便快速浏览当天最受关注的大赛讨论。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2314121a'/%3E%3Cpath d='M20 42l10-22h7l10 22h-7l-2-5H29l-2 5z' fill='%23ff5c7a'/%3E%3Cpath d='M31 31h5l-2.5-6z' fill='%2314121a'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#0f0d13;
+    --bg2:#151220;
+    --card:#1a1622;
+    --line:#2b2437;
+    --txt:#ece8f2;
+    --sub:#a79fb8;
+    --hot:#ff5c7a;
+    --hot2:#ffb04d;
+    --accent:#8f7bff;
+    --radius:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+    background:var(--bg);
+    color:var(--txt);
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+
+  /* 页头 */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(15,13,19,.86);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .head{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 0;flex-wrap:wrap}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;letter-spacing:.5px}
+  .logo .mark{
+    width:34px;height:34px;border-radius:10px;flex:0 0 auto;
+    background:linear-gradient(140deg,var(--hot),var(--accent));
+    display:grid;place-items:center;
+  }
+  .logo .mark svg{width:20px;height:20px}
+  nav ul{display:flex;gap:22px;list-style:none;font-size:15px;color:var(--sub)}
+  nav a:hover{color:var(--hot)}
+  .head .go{
+    display:inline-block;padding:8px 16px;border-radius:999px;
+    background:linear-gradient(120deg,var(--hot),#ff8a5c);
+    color:#1a0f16;font-weight:700;font-size:14px;
+  }
+
+  /* 首屏 */
+  .hero{
+    padding:56px 0 44px;
+    background:
+      radial-gradient(680px 320px at 82% 0%,rgba(143,123,255,.20),transparent 70%),
+      radial-gradient(520px 280px at 4% 20%,rgba(255,92,122,.16),transparent 70%);
+    border-bottom:1px solid var(--line);
+  }
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+  .tagline{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:13px;color:var(--hot2);
+    border:1px solid rgba(255,176,77,.35);
+    background:rgba(255,176,77,.08);
+    padding:5px 12px;border-radius:999px;margin-bottom:18px;
+  }
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--hot);animation:pulse 1.6s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+  h1{font-size:clamp(28px,4.4vw,44px);line-height:1.25;letter-spacing:.5px;font-weight:800}
+  h1 em{font-style:normal;background:linear-gradient(100deg,var(--hot),var(--hot2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p.lead{color:var(--sub);font-size:16px;margin:16px 0 26px;max-width:34em}
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:12px 22px;border-radius:12px;font-weight:700;font-size:15px;
+    transition:transform .15s ease,box-shadow .15s ease;
+  }
+  .btn:hover{transform:translateY(-2px)}
+  .btn-main{background:linear-gradient(120deg,var(--hot),#ff8a5c);color:#1a0f16;box-shadow:0 10px 24px -10px rgba(255,92,122,.9)}
+  .btn-ghost{border:1px solid var(--line);color:var(--txt);background:rgba(255,255,255,.03)}
+  .btn-ghost:hover{border-color:var(--hot)}
+  .hero-art{
+    background:linear-gradient(160deg,#1d1828,#141019);
+    border:1px solid var(--line);border-radius:22px;padding:22px;
+  }
+  .hero-art .row{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--sub);margin-bottom:14px}
+  .hero-art .row b{color:var(--hot2)}
+  .bar{height:9px;border-radius:999px;background:#241d31;margin-bottom:12px;overflow:hidden}
+  .bar i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--hot),var(--accent))}
+  .hero-art .mini{display:flex;gap:10px;margin-top:16px}
+  .hero-art .mini span{flex:1;text-align:center;font-size:12px;color:var(--sub);background:#1c1727;border:1px solid var(--line);border-radius:10px;padding:8px 4px}
+  .hero-art .mini span b{display:block;color:var(--txt);font-size:15px}
+
+  /* 通用分区 */
+  section{padding:52px 0}
+  .sec-head{margin-bottom:26px}
+  .kicker{font-size:13px;color:var(--hot2);letter-spacing:2px;font-weight:700}
+  h2{font-size:clamp(21px,2.6vw,27px);font-weight:800;margin-top:6px}
+  .sec-head p{color:var(--sub);font-size:15px;margin-top:8px;max-width:44em}
+
+  /* 榜单 */
+  .board{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:20px;transition:border-color .2s ease,transform .2s ease;
+  }
+  .card:hover{border-color:#4a3d63;transform:translateY(-3px)}
+  .card .no{
+    font-family:Georgia,serif;font-size:13px;color:var(--hot);
+    border:1px solid rgba(255,92,122,.4);border-radius:6px;
+    padding:1px 7px;display:inline-block;margin-bottom:12px;font-weight:700;
+  }
+  .card h3{font-size:16px;font-weight:700;line-height:1.5;margin-bottom:8px}
+  .card p{font-size:14px;color:var(--sub)}
+  .card .meta{display:flex;gap:14px;margin-top:14px;font-size:12px;color:#7c7290}
+  .card .meta b{color:var(--hot2);font-weight:600}
+
+  /* 分类 */
+  .cats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .cat{
+    border:1px solid var(--line);border-radius:14px;padding:18px;
+    background:linear-gradient(160deg,#1b1626,#141019);
+  }
+  .cat svg{width:26px;height:26px;margin-bottom:12px;color:var(--hot)}
+  .cat h3{font-size:15px;margin-bottom:6px}
+  .cat p{font-size:13px;color:var(--sub)}
+
+  /* 正文文章区 */
+  .read{display:grid;grid-template-columns:1.6fr .9fr;gap:34px;align-items:start}
+  article p{margin-bottom:16px;font-size:15.5px;color:#d7d1e2}
+  article h3{font-size:18px;margin:26px 0 10px;padding-left:12px;border-left:3px solid var(--hot)}
+  article strong{color:var(--hot2)}
+  .side{
+    background:var(--bg2);border:1px solid var(--line);border-radius:var(--radius);padding:22px;position:sticky;top:90px;
+  }
+  .side h3{font-size:15px;margin-bottom:14px;color:var(--txt)}
+  .side ul{list-style:none;font-size:14px;color:var(--sub)}
+  .side li{padding:9px 0;border-bottom:1px dashed var(--line);display:flex;gap:10px}
+  .side li:last-child{border-bottom:0}
+  .side li span{color:var(--hot);font-weight:700}
+  .side .note{font-size:12.5px;color:#7c7290;margin-top:14px;line-height:1.6}
+
+  /* 搜索筛选 */
+  .filter{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}
+  .filter input{
+    flex:1 1 260px;min-width:0;background:#1a1622;border:1px solid var(--line);
+    border-radius:10px;padding:11px 14px;color:var(--txt);font-size:14px;font-family:inherit;
+  }
+  .filter input:focus{outline:none;border-color:var(--hot)}
+  .filter button{
+    background:linear-gradient(120deg,var(--hot),#ff8a5c);border:0;border-radius:10px;
+    padding:11px 22px;font-weight:700;color:#1a0f16;font-size:14px;cursor:pointer;font-family:inherit;
+  }
+  .empty{color:var(--sub);font-size:14px;padding:10px 0}
+
+  /* 下载条 */
+  .dl{
+    display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;
+    background:linear-gradient(120deg,#221a30,#181322);
+    border:1px solid var(--line);border-radius:20px;padding:26px 28px;
+  }
+  .dl h2{font-size:20px;margin:0 0 6px}
+  .dl p{color:var(--sub);font-size:14px;max-width:38em}
+  .dl .btn-main[aria-disabled="true"]{opacity:.85;cursor:default}
+
+  /* 页尾 */
+  footer{border-top:1px solid var(--line);padding:34px 0 40px;margin-top:20px;background:#0c0a10}
+  .foot{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;font-size:13.5px;color:var(--sub)}
+  .foot .brand{display:flex;align-items:center;gap:9px;font-weight:800;color:var(--txt);font-size:15px;margin-bottom:8px}
+  .foot .brand .mark{width:26px;height:26px;border-radius:8px;background:linear-gradient(140deg,var(--hot),var(--accent));display:grid;place-items:center}
+  .foot .brand .mark svg{width:15px;height:15px}
+  .foot nav{display:flex;gap:18px;flex-wrap:wrap}
+  .foot nav a:hover{color:var(--hot)}
+  .copy{margin-top:22px;font-size:12.5px;color:#6e647f}
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr}
+    .board{grid-template-columns:1fr 1fr}
+    .cats{grid-template-columns:1fr 1fr}
+    .read{grid-template-columns:1fr}
+    .side{position:static}
+  }
+  @media (max-width:600px){
+    .head{padding:12px 0}
+    nav ul{gap:14px;font-size:14px;flex-wrap:wrap}
+    .head .go{display:none}
+    .hero{padding:36px 0 32px}
+    .board,.cats{grid-template-columns:1fr}
+    section{padding:38px 0}
+    .dl{padding:20px}
+  }
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header>
+  <div class="wrap head">
+    <a class="logo" href="#top" aria-label="91每日大赛首页">
+      <span class="mark" aria-hidden="true">
+        <svg viewBox="0 0 64 64" fill="none"><path d="M20 44l10-24h7l10 24h-7l-2-6H29l-2 6z" fill="#1a0f16"/><path d="M31 32h5l-2.5-7z" fill="#ffb04d"/></svg>
+      </span>
+      91每日大赛
+    </a>
+    <nav aria-label="主导航">
+      <ul>
+        <li><a href="#board">今日榜单</a></li>
+        <li><a href="#cats">热点分类</a></li>
+        <li><a href="#topic">话题速览</a></li>
+        <li><a href="#about">关于本站</a></li>
+      </ul>
+    </nav>
+    <a class="go" href="#board">看今日热点</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 首屏 -->
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="tagline"><span class="dot"></span>每日热点内容持续更新</span>
+        <h1>91每日大赛</h1>
+        <p class="lead">91每日大赛把当天讨论度较高的大赛话题集中在一处，按爆料、黑料、吃瓜讨论分类展示，让你用一页时间了解热点走向与争议焦点。</p>
+        <div class="hero-actions">
+          <a class="btn btn-main" href="#board">进入今日榜单</a>
+          <a class="btn btn-ghost" href="#cats">按分类浏览</a>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="row"><span>今日话题热度</span><b>持续攀升</b></div>
+        <div class="bar"><i style="width:88%"></i></div>
+        <div class="bar"><i style="width:71%"></i></div>
+        <div class="bar"><i style="width:56%"></i></div>
+        <div class="bar"><i style="width:39%"></i></div>
+        <div class="mini">
+          <span><b>爆料</b>热点条目</span>
+          <span><b>黑料</b>争议整理</span>
+          <span><b>吃瓜</b>讨论聚合</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 今日榜单 -->
+  <section id="board">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">TODAY RANK</div>
+        <h2>今日热点榜单</h2>
+        <p>以下条目按话题形态归类，分别对应91每日大赛中爆料、黑料与吃瓜讨论三类内容，便于快速定位你关心的方向。</p>
+      </div>
+
+      <div class="filter">
+        <input type="search" id="q" placeholder="搜索榜单关键词，如：爆料、吃瓜、黑料" aria-label="搜索榜单关键词">
+        <button type="button" id="qbtn">搜索</button>
+      </div>
+
+      <div class="board" id="boardList">
+        <article class="card">
+          <span class="no">01</span>
+          <h3>爆料向：新话题集中抛出的当天</h3>
+          <p>多条爆料在同一时段出现，来源说法不一。浏览时先看原始表述，再对照后续补充，避免只读到被截取的片段。</p>
+          <div class="meta"><span>分类 <b>爆料</b></span><span>形态 <b>多条汇总</b></span></div>
+        </article>
+        <article class="card">
+          <span class="no">02</span>
+          <h3>黑料向：争议内容的来龙去脉</h3>
+          <p>黑料类话题往往包含时间线与多方说法。91每日大赛将同一事件的零散材料放在一起，方便看清争议从哪一步开始。</p>
+          <div class="meta"><span>分类 <b>黑料</b></span><span>形态 <b>时间线</b></span></div>
+        </article>
+        <article class="card">
+          <span class="no">03</span>
+          <h3>吃瓜向：讨论区里的不同声音</h3>
+          <p>吃瓜讨论的价值在于观点碰撞。同一件事有人关注细节，有人关注态度，读的时候分清事实陈述与主观判断。</p>
+          <div class="meta"><span>分类 <b>吃瓜</b></span><span>形态 <b>观点聚合</b></span></div>
+        </article>
+        <article class="card">
+          <span class="no">04</span>
+          <h3>大赛话题：热度为何集中在一天</h3>
+          <p>热点有明显的时间窗口，91每日大赛按日梳理，把当天冒头的话题与前一天留下的讨论区分开来，避免混淆。</p>
+          <div class="meta"><span>分类 <b>热点</b></span><span>形态 <b>按日梳理</b></span></div>
+        </article>
+        <article class="card">
+          <span class="no">05</span>
+          <h3>反转类：后续补充改变了判断</h3>
+          <p>不少话题在几小时后出现新说法。遇到反转，先确认新材料的出处与时间，再决定是否调整原来的看法。</p>
+          <div class="meta"><span>分类 <b>跟进</b></span><span>形态 <b>补充说明</b></span></div>
+        </article>
+        <article class="card">
+          <span class="no">06</span>
+          <h3>冷读类：热度不高但值得一看</h3>
+          <p>不是所有内容都会冲上讨论前列。部分条目关注度有限，但材料完整、叙述清楚，适合作为了解背景的入口。</p>
+          <div class="meta"><span>分类 <b>观察</b></span><span>形态 <b>背景补充</b></span></div>
+        </article>
+      </div>
+      <p class="empty" id="empty" hidden>没有匹配的榜单条目，换个关键词试试。</p>
+    </div>
+  </section>
+
+  <!-- 分类 -->
+  <section id="cats" style="background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">CATEGORY</div>
+        <h2>按内容类型浏览</h2>
+        <p>91每日大赛的内容形态差异较大，分类浏览比逐条翻看更省时间。四类入口分别对应不同的阅读目的。</p>
+      </div>
+      <div class="cats">
+        <div class="cat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l14-7v16L3 13z"/><path d="M7 12v6"/></svg>
+          <h3>爆料速览</h3>
+          <p>新出现的说法与材料，按出现顺序排列，适合快速了解当天发生了什么。</p>
+        </div>
+        <div class="cat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v6l4 2"/></svg>
+          <h3>黑料时间线</h3>
+          <p>把散落的节点串成先后顺序，帮助判断哪条信息出现得更早、更靠前。</p>
+        </div>
+        <div class="cat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 01-11.6 7.1L4 20l1-5A8 8 0 1121 12z"/></svg>
+          <h3>吃瓜讨论</h3>
+          <p>汇集不同立场的说法，重点在于观点差异，而不是替任何人下结论。</p>
+        </div>
+        <div class="cat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5a1 1 0 011-1h11l4 4v11a1 1 0 01-1 1H5a1 1 0 01-1-1z"/><path d="M8 12h8M8 16h5"/></svg>
+          <h3>背景补读</h3>
+          <p>为热度不高但信息完整的话题保留位置，适合补足上下文再回头看主线。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 正文 + 侧栏 -->
+  <section id="topic">
+    <div class="wrap read">
+      <article>
+        <div class="sec-head" style="margin-bottom:18px">
+          <div class="kicker">READING</div>
+          <h2>怎么看懂一天里的大赛热点</h2>
+        </div>
+        <p>热点话题的节奏通常很快。同一件事在不同时间被转述，措辞会变，重点也会变。<strong>91每日大赛</strong>按日呈现内容，正是为了让读者看到同一话题在一天内的不同阶段，而不是只看到最后一版说法。</p>
+
+        <h3>先分清事实与转述</h3>
+        <p>爆料内容里，原始表述和二次转述常常混在一起。一个可行的做法是先找出最早出现的那条信息，再对比后续版本增加了什么、删掉了什么。转述中多出来的形容词，往往就是情绪被放大的地方。</p>
+
+        <h3>给争议留出时间</h3>
+        <p>黑料类话题最怕急于定论。材料刚出现时信息最少，而争议最大。把时间线拉长来看，很多看似矛盾的说法其实只是不同阶段的不同补充。91每日大赛把节点按先后排列，读起来更容易判断哪一条更接近源头。</p>
+
+        <h3>区分讨论与结论</h3>
+        <p>吃瓜讨论区的价值是提供多种视角，而不是给出判决。同一件事有人关心细节是否准确，有人关心态度是否合适，这两种关注点并不冲突。阅读时把事实陈述和主观评价分开，就能减少被单一说法带着走的情况。</p>
+
+        <h3>热度不等于分量</h3>
+        <p>讨论量大的话题未必信息完整，冷门条目也可能材料扎实。浏览91每日大赛时，可以先用榜单了解当天有哪些方向，再按分类进入具体条目，最后回头补读背景，这样比从头到尾顺着刷更有效率。</p>
+      </article>
+
+      <aside class="side">
+        <h3>浏览提示</h3>
+        <ul>
+          <li><span>1</span>先看榜单标题，判断话题方向</li>
+          <li><span>2</span>进入分类，按类型筛选内容</li>
+          <li><span>3</span>对照时间线，确认信息先后</li>
+          <li><span>4</span>补读背景，再回看主线讨论</li>
+        </ul>
+        <p class="note">本站内容以聚合与梳理为主，条目形态随当天话题变化，具体信息以原始表述为准。</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 关于 + 下载 -->
+  <section id="about" style="padding-top:0">
+    <div class="wrap">
+      <div class="dl">
+        <div>
+          <h2>关于91每日大赛</h2>
+          <p>91每日大赛是一个按日汇总热点大赛话题的浏览页，内容覆盖爆料、黑料与吃瓜讨论三类形态。页面以榜单和分类为主线，帮助读者在较短时间内把握当天话题的整体面貌。</p>
+        </div>
+        <a class="btn btn-main" href="#" data-download-placeholder="true" aria-disabled="true" tabindex="-1" style="pointer-events:none">下载</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <div class="brand">
+          <span class="mark" aria-hidden="true">
+            <svg viewBox="0 0 64 64" fill="none"><path d="M20 44l10-24h7l10 24h-7l-2-6H29l-2 6z" fill="#1a0f16"/><path d="M31 32h5l-2.5-7z" fill="#ffb04d"/></svg>
+          </span>
+          91每日大赛
+        </div>
+        <p>每日热点大赛话题聚合浏览，按爆料、黑料、吃瓜分类梳理。</p>
+      </div>
+      <nav aria-label="页尾导航">
+        <a href="#board">今日榜单</a>
+        <a href="#cats">热点分类</a>
+        <a href="#topic">话题速览</a>
+        <a href="#about">关于本站</a>
+      </nav>
+    </div>
+    <p class="copy">© 91每日大赛 · 页面内容以聚合梳理为主，具体信息以原始表述为准。</p>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var q = document.getElementById('q');
+    var btn = document.getElementById('qbtn');
+    var list = document.getElementById('boardList');
+    var empty = document.getElementById('empty');
+    var cards = Array.prototype.slice.call(list.querySelectorAll('.card'));
+    function run(){
+      var kw = (q.value || '').trim().toLowerCase();
+      var shown = 0;
+      cards.forEach(function(c){
+        var hit = !kw || c.textContent.toLowerCase().indexOf(kw) > -1;
+        c.style.display = hit ? '' : 'none';
+        if(hit) shown++;
+      });
+      empty.hidden = shown !== 0;
+    }
+    btn.addEventListener('click', run);
+    q.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); run(); } });
+    q.addEventListener('input', function(){ if(!q.value.trim()) run(); });
+  })();
+</script>
+</body>
+</html>
