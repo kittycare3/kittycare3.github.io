@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>研究所导航-科研机构网址导航_研究所官网入口_学术机构导航</title>
+<meta name="description" content="研究所导航汇集国内外科研机构、实验室与学术组织的官方入口，按学科与地区分类，提供清晰的研究所官网直达路径，帮助科研人员与学生快速找到所需机构。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f2f4c'/%3E%3Ccircle cx='32' cy='26' r='9' fill='none' stroke='%237fd4c4' stroke-width='3'/%3E%3Cpath d='M32 35v14M24 49h16' stroke='%237fd4c4' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --ink:#0f2f4c;
+    --ink-soft:#1f4a6e;
+    --teal:#2f9c8a;
+    --teal-light:#7fd4c4;
+    --paper:#f4f7f8;
+    --card:#ffffff;
+    --line:#dbe5e8;
+    --text:#22323c;
+    --muted:#5d7380;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Source Han Sans SC",system-ui,sans-serif;
+    background:var(--paper);
+    color:var(--text);
+    line-height:1.75;
+    font-size:16px;
+  }
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;max-width:100%;}
+  .wrap{width:min(1160px,92vw);margin:0 auto;}
+
+  /* header */
+  header.site{
+    background:var(--ink);
+    color:#eaf3f5;
+    position:sticky;top:0;z-index:50;
+    box-shadow:0 2px 12px rgba(15,47,76,.18);
+  }
+  .head-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:18px;padding:14px 0;flex-wrap:wrap;
+  }
+  .brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.5px;}
+  .brand .mark{
+    width:40px;height:40px;border-radius:11px;
+    background:linear-gradient(145deg,#17415f,#0c2537);
+    display:grid;place-items:center;flex:0 0 auto;
+    border:1px solid rgba(127,212,196,.35);
+  }
+  .brand .name{font-size:19px;color:#fff;}
+  nav.main{display:flex;gap:6px;flex-wrap:wrap;align-items:center;}
+  nav.main a{
+    padding:7px 13px;border-radius:9px;font-size:15px;color:#cfe0e6;
+    transition:background .18s,color .18s;
+  }
+  nav.main a:hover,nav.main a:focus-visible{background:rgba(127,212,196,.16);color:#fff;outline:none;}
+  nav.main a.cta{
+    background:var(--teal);color:#fff;font-weight:600;
+  }
+  nav.main a.cta:hover{background:#38ad9a;}
+
+  /* hero */
+  .hero{
+    background:linear-gradient(160deg,#0f2f4c 0%,#14405f 55%,#1b5677 100%);
+    color:#eef6f8;
+    padding:56px 0 48px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;right:-120px;top:-90px;width:420px;height:420px;
+    border-radius:50%;border:1px solid rgba(127,212,196,.25);
+    box-shadow:0 0 0 60px rgba(127,212,196,.05),0 0 0 130px rgba(127,212,196,.035);
+    pointer-events:none;
+  }
+  .hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:40px;align-items:center;position:relative;z-index:1;}
+  .kicker{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:13px;letter-spacing:2px;color:var(--teal-light);
+    border:1px solid rgba(127,212,196,.4);border-radius:999px;
+    padding:4px 14px;margin-bottom:18px;
+  }
+  h1{
+    font-size:clamp(30px,4.4vw,46px);
+    line-height:1.22;margin:0 0 16px;font-weight:800;color:#fff;
+    letter-spacing:1px;
+  }
+  .hero p.lead{font-size:16px;color:#c6dbe2;margin:0 0 26px;max-width:34em;}
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:11px 22px;border-radius:10px;font-size:15px;font-weight:600;
+    border:1px solid transparent;transition:.18s;
+  }
+  .btn-primary{background:var(--teal);color:#fff;}
+  .btn-primary:hover{background:#37b09c;}
+  .btn-ghost{border-color:rgba(127,212,196,.5);color:#dff1f1;}
+  .btn-ghost:hover{background:rgba(127,212,196,.12);}
+  .hero-panel{
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(127,212,196,.28);
+    border-radius:var(--radius);
+    padding:20px 22px;
+    backdrop-filter:blur(2px);
+  }
+  .hero-panel h2{font-size:15px;margin:0 0 12px;color:var(--teal-light);letter-spacing:1px;font-weight:600;}
+  .hero-panel ul{list-style:none;margin:0;padding:0;font-size:14.5px;color:#cfe0e6;}
+  .hero-panel li{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px dashed rgba(255,255,255,.13);}
+  .hero-panel li:last-child{border-bottom:none;}
+  .hero-panel li b{color:#fff;font-weight:600;}
+
+  /* search */
+  .search-bar{
+    margin-top:28px;background:rgba(255,255,255,.08);
+    border:1px solid rgba(127,212,196,.3);border-radius:12px;
+    padding:6px;display:flex;gap:6px;max-width:520px;
+  }
+  .search-bar input{
+    flex:1;border:0;background:transparent;color:#fff;font-size:15px;
+    padding:9px 12px;outline:none;font-family:inherit;
+  }
+  .search-bar input::placeholder{color:#9fb9c4;}
+  .search-bar button{
+    border:0;border-radius:8px;background:var(--teal);color:#fff;
+    font-size:14.5px;font-weight:600;padding:9px 20px;cursor:pointer;font-family:inherit;
+  }
+  .search-bar button:hover{background:#37b09c;}
+  .search-note{font-size:13px;color:#9fb9c4;margin-top:10px;}
+
+  /* sections */
+  section{padding:52px 0;}
+  .sec-head{margin-bottom:26px;}
+  .sec-head .eyebrow{
+    font-size:13px;letter-spacing:2px;color:var(--teal);font-weight:700;
+    text-transform:uppercase;margin-bottom:6px;
+  }
+  .sec-head h2{
+    font-size:clamp(22px,2.6vw,28px);margin:0 0 8px;color:var(--ink);font-weight:800;
+  }
+  .sec-head p{margin:0;color:var(--muted);font-size:15px;max-width:44em;}
+
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px;transition:transform .18s,box-shadow .18s,border-color .18s;
+  }
+  .card:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(15,47,76,.09);border-color:#bfd9dd;}
+  .card .ico{
+    width:40px;height:40px;border-radius:10px;display:grid;place-items:center;
+    background:#e7f3f1;margin-bottom:14px;
+  }
+  .card h3{font-size:17px;margin:0 0 8px;color:var(--ink);font-weight:700;}
+  .card p{margin:0;font-size:14.5px;color:var(--muted);}
+  .card .tag{
+    display:inline-block;margin-top:14px;font-size:12.5px;color:var(--ink-soft);
+    background:#eef4f6;border-radius:6px;padding:3px 9px;
+  }
+
+  /* category list */
+  .cat-wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .cat{
+    background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:16px 16px 14px;transition:.18s;
+  }
+  .cat:hover{border-color:var(--teal-light);background:#fbfdfd;}
+  .cat h3{font-size:15.5px;margin:0 0 6px;color:var(--ink);font-weight:700;}
+  .cat p{margin:0;font-size:13.5px;color:var(--muted);line-height:1.6;}
+
+  /* table */
+  .table-card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    overflow:hidden;
+  }
+  table{width:100%;border-collapse:collapse;font-size:14.5px;}
+  thead th{
+    text-align:left;background:#eef4f6;color:var(--ink);font-weight:700;
+    padding:13px 18px;font-size:14px;letter-spacing:.4px;
+  }
+  tbody td{padding:13px 18px;border-top:1px solid var(--line);color:var(--text);}
+  tbody tr:hover{background:#fafcfc;}
+  td .site{font-weight:600;color:var(--ink);}
+  td .desc{display:block;font-size:13px;color:var(--muted);margin-top:2px;}
+
+  /* about / text block */
+  .prose{max-width:52em;}
+  .prose p{margin:0 0 15px;font-size:15.5px;color:#33454f;}
+  .prose p strong{color:var(--ink);}
+
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;counter-reset:step;}
+  .step{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px;position:relative;
+  }
+  .step::before{
+    counter-increment:step;content:counter(step,decimal-leading-zero);
+    font-size:13px;font-weight:800;color:var(--teal);letter-spacing:1px;
+    display:block;margin-bottom:10px;
+  }
+  .step h3{font-size:16.5px;margin:0 0 8px;color:var(--ink);font-weight:700;}
+  .step p{margin:0;font-size:14.5px;color:var(--muted);}
+
+  .download-row{
+    display:flex;align-items:center;justify-content:space-between;gap:20px;
+    background:linear-gradient(120deg,#0f2f4c,#1b5677);color:#eef6f8;
+    border-radius:var(--radius);padding:28px 30px;flex-wrap:wrap;
+  }
+  .download-row h2{font-size:21px;margin:0 0 6px;color:#fff;font-weight:800;}
+  .download-row p{margin:0;font-size:14.5px;color:#c6dbe2;max-width:36em;}
+  .btn-download{
+    background:var(--teal);color:#fff;padding:12px 28px;border-radius:10px;
+    font-weight:700;font-size:15px;display:inline-flex;align-items:center;gap:8px;
+  }
+
+  footer.site{
+    background:#0b2333;color:#a9c2cc;padding:34px 0 26px;margin-top:12px;
+    font-size:14px;
+  }
+  .foot-inner{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-start;}
+  .foot-brand{font-weight:700;color:#fff;font-size:16px;display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+  .foot-links{display:flex;gap:18px;flex-wrap:wrap;}
+  .foot-links a{color:#a9c2cc;font-size:14px;}
+  .foot-links a:hover{color:#fff;}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.1);margin-top:22px;padding-top:16px;font-size:13px;color:#7e97a2;}
+
+  @media(max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:30px;}
+    .grid-3{grid-template-columns:1fr;}
+    .grid-2{grid-template-columns:1fr;}
+    .cat-wrap{grid-template-columns:repeat(2,1fr);}
+    .steps{grid-template-columns:1fr;}
+  }
+  @media(max-width:560px){
+    body{font-size:15.5px;}
+    .head-inner{padding:12px 0;}
+    nav.main a{padding:6px 10px;font-size:14px;}
+    .hero{padding:40px 0 36px;}
+    .cat-wrap{grid-template-columns:1fr;}
+    thead th,tbody td{padding:11px 13px;}
+    .download-row{padding:22px;}
+    section{padding:40px 0;}
+  }
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap head-inner">
+    <div class="brand">
+      <span class="mark" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7fd4c4" stroke-width="1.8" stroke-linecap="round">
+          <circle cx="12" cy="9" r="3.4"/>
+          <path d="M12 12.4V19M8.5 19h7"/>
+        </svg>
+      </span>
+      <span class="name">研究所导航</span>
+    </div>
+    <nav class="main" aria-label="主导航">
+      <a href="#categories">学科分类</a>
+      <a href="#institutes">机构目录</a>
+      <a href="#howto">使用方式</a>
+      <a href="#about">关于本站</a>
+      <a class="cta" href="#institutes">进入目录</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="kicker">科研机构入口 · 按学科与地区归类</span>
+        <h1>研究所导航</h1>
+        <p class="lead">研究所导航把分散的科研机构官网、实验室页面与学术组织入口集中到一处，按学科、地区与机构类型分层呈现，让查找一个研究所的官方地址不再依赖零散收藏与反复搜索。</p>
+        <div class="search-bar" role="search">
+          <input id="q" type="search" placeholder="输入学科或机构名，如 材料 / 海洋 / 天文" aria-label="搜索研究所">
+          <button type="button" id="searchBtn">筛选</button>
+        </div>
+        <p class="search-note">筛选结果直接在下方机构目录中显示，无需跳转。</p>
+        <div class="hero-actions" style="margin-top:22px;">
+          <a class="btn btn-primary" href="#institutes">浏览机构目录</a>
+          <a class="btn btn-ghost" href="#categories">按学科查看</a>
+        </div>
+      </div>
+      <aside class="hero-panel" aria-label="目录概览">
+        <h2>目录概览</h2>
+        <ul>
+          <li><span>学科分类</span><b>8 类</b></li>
+          <li><span>收录机构条目</span><b>示例 12 条</b></li>
+          <li><span>覆盖地区</span><b>华北 / 华东 / 华南 / 海外</b></li>
+          <li><span>更新方式</span><b>人工复核链接</b></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section id="categories">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Discipline</div>
+        <h2>按学科找到对口研究所</h2>
+        <p>研究所导航的学科分类以研究方向为主线，同一学科下的机构往往跨地区分布，先确定学科再筛选地区，是使用本站最高效的顺序。</p>
+      </div>
+      <div class="cat-wrap">
+        <div class="cat"><h3>数学与物理</h3><p>基础理论、应用数学、粒子与凝聚态方向的研究机构。</p></div>
+        <div class="cat"><h3>化学与材料</h3><p>合成化学、高分子、金属与无机材料类研究单位。</p></div>
+        <div class="cat"><h3>生命与医学</h3><p>生物医学、基因组、临床与公共卫生研究机构。</p></div>
+        <div class="cat"><h3>地球与环境</h3><p>地质、海洋、大气、生态与资源环境类研究所。</p></div>
+        <div class="cat"><h3>信息与计算</h3><p>计算机、人工智能、网络与数据科学方向机构。</p></div>
+        <div class="cat"><h3>工程与能源</h3><p>机械、电力、能源转化与工程技术类研究单位。</p></div>
+        <div class="cat"><h3>农业与食品</h3><p>作物、畜牧、食品科学与农业资源研究机构。</p></div>
+        <div class="cat"><h3>人文与社会</h3><p>经济、历史、社会调查与政策研究类院所。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="institutes" style="background:#eaf1f3;">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Directory</div>
+        <h2>机构目录示例</h2>
+        <p>下列条目用于说明研究所导航的目录结构：每条包含机构名称、所属学科与入口用途。点击名称前的筛选框可按关键词缩小范围。</p>
+      </div>
+      <div class="table-card">
+        <table>
+          <thead>
+            <tr><th>机构</th><th>学科</th><th>地区</th></tr>
+          </thead>
+          <tbody id="instBody">
+            <tr><td><span class="site">理论物理研究机构</span><span class="desc">基础物理与交叉理论研究入口</span></td><td>数学与物理</td><td>华北</td></tr>
+            <tr><td><span class="site">材料科学研究所</span><span class="desc">金属、无机与复合材料的公开页面</span></td><td>化学与材料</td><td>华东</td></tr>
+            <tr><td><span class="site">海洋环境研究所</span><span class="desc">海洋观测与生态方向机构入口</span></td><td>地球与环境</td><td>华南</td></tr>
+            <tr><td><span class="site">计算技术研究机构</span><span class="desc">计算机体系与算法研究页面</span></td><td>信息与计算</td><td>华北</td></tr>
+            <tr><td><span class="site">能源工程研究院</span><span class="desc">能源转化与工程示范类机构</span></td><td>工程与能源</td><td>华东</td></tr>
+            <tr><td><span class="site">作物科学研究所</span><span class="desc">作物育种与农业资源研究入口</span></td><td>农业与食品</td><td>华中</td></tr>
+            <tr><td><span class="site">生物医学研究机构</span><span class="desc">基因组与转化医学方向页面</span></td><td>生命与医学</td><td>华东</td></tr>
+            <tr><td><span class="site">天文观测研究机构</span><span class="desc">天文台与观测数据公开入口</span></td><td>数学与物理</td><td>西南</td></tr>
+            <tr><td><span class="site">社会发展研究院</span><span class="desc">社会调查与政策研究类机构</span></td><td>人文与社会</td><td>华北</td></tr>
+            <tr><td><span class="site">食品科学研究机构</span><span class="desc">食品安全与加工技术研究页面</span></td><td>农业与食品</td><td>华南</td></tr>
+            <tr><td><span class="site">大气物理研究所</span><span class="desc">气候模拟与大气监测机构入口</span></td><td>地球与环境</td><td>华北</td></tr>
+            <tr><td><span class="site">海外联合实验室</span><span class="desc">国际合作研究机构的公开主页</span></td><td>信息与计算</td><td>海外</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p id="emptyTip" style="display:none;margin-top:14px;color:#5d7380;font-size:14.5px;">没有匹配的条目，试试更换关键词，例如“物理”“海洋”“能源”。</p>
+    </div>
+  </section>
+
+  <section id="howto">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Workflow</div>
+        <h2>用研究所导航找机构的三步</h2>
+        <p>研究所导航面向的是“我要找某个方向的研究单位”这一具体需求，因此页面把查找路径压缩成三个动作，减少在搜索结果间来回比对的次数。</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <h3>先定学科</h3>
+          <p>在学科分类区确定研究方向所属门类。若方向交叉，可先在两个相邻门类中各看一遍。</p>
+        </div>
+        <div class="step">
+          <h3>再筛地区</h3>
+          <p>机构目录中地区一列可按关键词过滤，输入城市或区域简称即可缩小范围。</p>
+        </div>
+        <div class="step">
+          <h3>核对入口</h3>
+          <p>进入机构页面前，确认域名与机构全称一致，避免误入名称相近的非官方页面。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" style="background:#eaf1f3;">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">About</div>
+        <h2>关于研究所导航</h2>
+      </div>
+      <div class="prose">
+        <p><strong>研究所导航</strong>是一个以科研机构入口为核心的目录型页面。它不生产研究内容，也不代替机构官网发布公告，只负责把机构名称、学科归属与地区位置整理成可检索的结构。对需要长期追踪某几个研究所动态的读者来说，研究所导航的价值在于稳定的入口位置，而不是信息的二次加工。</p>
+        <p>目录中的学科划分依据机构公开的研究方向，同一机构若横跨多个领域，本站只归入其主方向。地区标签用于空间定位，不代表机构规模或级别。研究所导航目前以示例条目演示目录结构，条目数量会随整理进度增加。</p>
+        <p>使用研究所导航时，请以机构官方页面发布的信息为准。本站链接指向机构主页或公开的研究单元页面，不提供论文全文、数据下载或内部系统入口。若发现链接失效或机构更名，可通过页尾方式反馈，我们会在复核后调整条目。</p>
+      </div>
+      <div class="grid-2" style="margin-top:26px;">
+        <div class="card">
+          <div class="ico" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2f9c8a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+          </div>
+          <h3>条目收录原则</h3>
+          <p>收录具有独立官网、研究方向明确的科研机构与实验室；名称相同或高度相似的机构只保留官方主体。</p>
+          <span class="tag">人工复核</span>
+        </div>
+        <div class="card">
+          <div class="ico" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2f9c8a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 8l7-5 7 5"/></svg>
+          </div>
+          <h3>链接维护</h3>
+          <p>定期检查入口可达性，机构调整域名或栏目结构时同步更新，保持研究所导航的指向准确。</p>
+          <span class="tag">按批次更新</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="download-row">
+        <div>
+          <h2>下载机构目录清单</h2>
+          <p>将研究所导航的当前条目导出为清单，便于在离线环境中按学科与地区查阅。文件内容与页面目录保持一致。</p>
+        </div>
+        <a class="btn-download" href="#" data-download-placeholder="true" aria-disabled="true" tabindex="-1" style="pointer-events:none;">下载</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap foot-inner">
+    <div>
+      <div class="foot-brand">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7fd4c4" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="9" r="3.4"/><path d="M12 12.4V19M8.5 19h7"/></svg>
+        研究所导航
+      </div>
+      <p style="margin:0;max-width:30em;">研究所导航汇集科研机构官网入口，按学科与地区组织目录，服务于科研人员、学生与机构信息查找需求。</p>
+    </div>
+    <div class="foot-links">
+      <a href="#categories">学科分类</a>
+      <a href="#institutes">机构目录</a>
+      <a href="#howto">使用方式</a>
+      <a href="#about">关于本站</a>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    研究所导航 · 目录条目以机构官方页面为准 · 本站不提供研究数据下载
+  </div>
+</footer>
+
+<script>
+(function(){
+  var input = document.getElementById('q');
+  var btn = document.getElementById('searchBtn');
+  var rows = Array.prototype.slice.call(document.querySelectorAll('#instBody tr'));
+  var tip = document.getElementById('emptyTip');
+
+  function filter(){
+    var kw = (input.value || '').trim().toLowerCase();
+    var shown = 0;
+    rows.forEach(function(tr){
+      var text = tr.textContent.toLowerCase();
+      var ok = !kw || text.indexOf(kw) !== -1;
+      tr.style.display = ok ? '' : 'none';
+      if(ok) shown++;
+    });
+    tip.style.display = shown === 0 ? 'block' : 'none';
+  }
+
+  btn.addEventListener('click', filter);
+  input.addEventListener('input', filter);
+  input.addEventListener('keydown', function(e){
+    if(e.key === 'Enter'){ e.preventDefault(); filter(); }
+  });
+})();
+</script>
+</body>
+</html>
